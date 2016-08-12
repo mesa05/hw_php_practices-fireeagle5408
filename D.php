@@ -13,5 +13,4 @@ for($hundred=1 ; $hundred<=9 ; $hundred++){
         }
     }
 }
-
 ?>
