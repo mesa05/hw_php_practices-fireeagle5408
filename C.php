@@ -3,7 +3,7 @@
     </head>
     <body>
         <form method="post">
-        Year(>0):<input type="text" name="textYear">
+        Year(>0 A.D.):<input type="text" name="textYear">
         Month(1-12):<input type="text" name="textMonth">
         Day(0-31):<input type="text" name="textDay">
         <input type="submit" name="bntOK" value="OK">
