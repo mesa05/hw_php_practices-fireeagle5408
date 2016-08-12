@@ -3,9 +3,9 @@
     </head>
     <body>
         <form method="post">
-        Year:<input type="text" name="textYear">
-        Month:<input type="text" name="textMonth">
-        Day:<input type="text" name="textDay">
+        Year(>0):<input type="text" name="textYear">
+        Month(1-12):<input type="text" name="textMonth">
+        Day(0-31):<input type="text" name="textDay">
         <input type="submit" name="bntOK" value="OK">
         </form>
     </body>
@@ -22,10 +22,11 @@ $daysSum;
 $surplus;
 $Error;
 
-if($Year<0 || $Month<0 || $Month>13 || $Day<0 || $Day>31 || ($Year%4==0 && $Month==2 && $Day>=30) || ($Year%4!=0 && $Month==2 && $Day>=29) || $Year=="" || $Month=="" || $Day=="")
-{
+if($Year=="" && $Month=="" && $Day=="")
+    $Error=2;
+else if($Year<0 || $Month<0 || $Month>13 || $Day<0 || $Day>31 || ($Year%4==0 && $Month==2 && $Day>=30) || ($Year%4!=0 && $Month==2 && $Day>=29) || $Year=="" || $Month=="" || $Day=="")
     $Error=1;
-}
+
 
 if($_POST=["bntOK"]) {
     if($Year%4==0)$daysFEB=29;
@@ -55,7 +56,11 @@ if($_POST=["bntOK"]) {
         }
     }
     $daysSum += $Day;
-    if($Error){
+    
+    if($Error==2){
+    echo "Please enter a correct day.";
+    }
+    else if($Error==1){
     echo "Error!! You enter a wrong number.";
     }
     else echo $daysSum." day<br>";
